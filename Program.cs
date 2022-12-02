@@ -6,9 +6,10 @@ namespace AOC22
     public class Program
     {
         public static Dictionary<int, Solution> solutions = new Dictionary<int, Solution>() { 
-            {1, new Day1()} 
+            {1, new Day1()},
+            {2, new Day2()} 
         };
-        public static List<int> days = new List<int>() { 1 };
+        public static List<int> days = new List<int>() { 2 };
 
         public static void Main(string[] args)
         {
