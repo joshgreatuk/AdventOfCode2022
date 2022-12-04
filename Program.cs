@@ -8,9 +8,10 @@ namespace AOC22
         public static Dictionary<int, Solution> solutions = new Dictionary<int, Solution>() { 
             {1, new Day1()},
             {2, new Day2()},
-            {3, new Day3()} 
+            {3, new Day3()},
+            {4, new Day4()}
         };
-        public static List<int> days = new List<int>() { 3 };
+        public static List<int> days = new List<int>() { 4 };
 
         public static void Main(string[] args)
         {
