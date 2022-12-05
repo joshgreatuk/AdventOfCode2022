@@ -8,7 +8,7 @@ namespace AOC22
     {
         string inputFile = "Day1/PuzzleInput.txt";
 
-        public override float[] GetSolution(string[] args)
+        public override string[] GetSolution(string[] args)
         {
             string fileInput = "";
             try
@@ -18,15 +18,15 @@ namespace AOC22
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new float[2];
+                return new string[2];
             }
 
             string[] elfCalories = fileInput.Replace("\r", string.Empty).Split("\n\n");
             float[] elfTotalCalories = elfCalories.Select<string, float>(x => Array.ConvertAll(x.Split("\n"), float.Parse).Sum()).ToArray();
 
-            float[] solution = new float[2];
-            solution[0] = GetTopScoresSum((float[])elfTotalCalories.Clone(), 1);
-            solution[1] = GetTopScoresSum((float[])elfTotalCalories.Clone(), 3);
+            string[] solution = new string[2];
+            solution[0] = GetTopScoresSum((float[])elfTotalCalories.Clone(), 1).ToString();
+            solution[1] = GetTopScoresSum((float[])elfTotalCalories.Clone(), 3).ToString();
 
             return solution;
         }

@@ -9,9 +9,10 @@ namespace AOC22
             {1, new Day1()},
             {2, new Day2()},
             {3, new Day3()},
-            {4, new Day4()}
+            {4, new Day4()},
+            {5, new Day5()}
         };
-        public static List<int> days = new List<int>() { 4 };
+        public static List<int> days = new List<int>() { 5 };
 
         public static void Main(string[] args)
         {
@@ -21,9 +22,9 @@ namespace AOC22
                 if (days.Contains(i+1)) 
                 {
                     Stopwatch timer = new Stopwatch();
-                    float[] solution = solutions[i+1].GetSolution(args);
+                    string[] solution = solutions[i+1].GetSolution(args);
                     timer.Stop();
-                    Console.WriteLine($"Solutions for day '{i+1.ToString()}' = '[{solution[0]},{solution[1]}]' in {timer.Elapsed.TotalMilliseconds}ms");
+                    Console.WriteLine($"Solutions for day '{(i+1).ToString()}' = '[{solution[0]},{solution[1]}]' in {timer.Elapsed.TotalMilliseconds}ms");
                 }
             }
         }

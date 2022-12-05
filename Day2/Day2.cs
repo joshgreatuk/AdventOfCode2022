@@ -44,7 +44,7 @@ namespace AOC22
     {
         string inputFile = "Day2/PuzzleInput.txt";
 
-        public override float[] GetSolution(string[] args)
+        public override string[] GetSolution(string[] args)
         {
             string fileInput = "";
             try
@@ -54,10 +54,10 @@ namespace AOC22
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new float[2];
+                return new string[2];
             }
 
-            float[] solution = new float[2];
+            string[] solution = new string[2];
 
             // //Solution Pt1 Method 1
             // float score = 0;
@@ -106,7 +106,7 @@ namespace AOC22
                 string[] shapes = inputLines[i].Split(" ");
                 score += GetRPSOutcome((RPS)Enum.Parse(typeof(RPS), shapes[0]), (RPS)Enum.Parse(typeof(RPS), shapes[1]));   
             }
-            solution[0] = score;
+            solution[0] = score.ToString();
 
             //Solution Pt2 (A mess :P)
             score = 0;
@@ -118,7 +118,7 @@ namespace AOC22
                 RPS yourShape = (expectedOutcome == RESULT.WIN) ? (RPS)((int)opponentShape + 1) : (expectedOutcome == RESULT.LOSE) ? (RPS)((int)opponentShape - 1): opponentShape;
                 score += GetRPSOutcome(opponentShape, ((int)yourShape == 4) ? (RPS)1 : ((int)yourShape == 0) ? (RPS)3 : yourShape);
             }
-            solution[1] = score;
+            solution[1] = score.ToString();
 
             //I accidentally swapped X and Y for this one, it took me a while and 2 methods to figure that out. . .
             return solution;

@@ -8,7 +8,7 @@ namespace AOC22
     {
         string inputFile = "Day4/Puzzle.txt";
 
-        public override float[] GetSolution(string[] args)
+        public override string[] GetSolution(string[] args)
         {
             string[] fileInput;
             try
@@ -18,9 +18,9 @@ namespace AOC22
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new float[2];
+                return new string[2];
             }
-            float[] solution = new float[2];
+            string[] solution = new string[2];
 
             //Solution
             int conflictPairs = 0;
@@ -38,7 +38,7 @@ namespace AOC22
                 }
                 if (pairA[0] <= pairB[0] && pairA[1] >= pairB[1]) conflictPairs++;
             }
-            solution[0] = conflictPairs;
+            solution[0] = conflictPairs.ToString();
 
             //Pt2
             conflictPairs = 0;
@@ -55,7 +55,7 @@ namespace AOC22
                 }
                 if (pairB[0] - pairA[1] <= 0) conflictPairs++;
             }
-            solution[1] = conflictPairs;
+            solution[1] = conflictPairs.ToString();
 
             return solution;
         }

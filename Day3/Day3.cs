@@ -8,7 +8,7 @@ namespace AOC22
     {
         string inputFile = "Day3/Puzzle.txt";
 
-        public override float[] GetSolution(string[] args)
+        public override string[] GetSolution(string[] args)
         {
             string[] fileInput;
             try
@@ -18,10 +18,10 @@ namespace AOC22
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return new float[2];
+                return new string[2];
             }
 
-            float[] solution = new float[2];
+            string[] solution = new string[2];
 
             //Solution
             //Read by lines, split string in half, go through first, create array of items
@@ -44,7 +44,7 @@ namespace AOC22
                     }
                 }
             }
-            solution[0] = score;
+            solution[0] = score.ToString();
 
             //Pt2
             score = 0;
@@ -67,7 +67,7 @@ namespace AOC22
                     } 
                 }
             }
-            solution[1] = score;
+            solution[1] = score.ToString();
 
             return solution;
         }
