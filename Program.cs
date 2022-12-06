@@ -10,9 +10,10 @@ namespace AOC22
             {2, new Day2()},
             {3, new Day3()},
             {4, new Day4()},
-            {5, new Day5()}
+            {5, new Day5()},
+            {6, new Day6()}
         };
-        public static List<int> days = new List<int>() { 5 };
+        public static List<int> days = new List<int>() { 6 };
 
         public static void Main(string[] args)
         {
