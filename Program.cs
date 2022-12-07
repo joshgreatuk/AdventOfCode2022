@@ -11,9 +11,10 @@ namespace AOC22
             {3, new Day3()},
             {4, new Day4()},
             {5, new Day5()},
-            {6, new Day6()}
+            {6, new Day6()},
+            {7, new Day7()}
         };
-        public static List<int> days = new List<int>() { 6 };
+        public static List<int> days = new List<int>() { 7 };
 
         public static void Main(string[] args)
         {
@@ -24,8 +25,8 @@ namespace AOC22
                 {
                     Stopwatch timer = new Stopwatch();
                     string[] solution = solutions[i+1].GetSolution(args);
-                    timer.Stop();
                     Console.WriteLine($"Solutions for day '{(i+1).ToString()}' = '[{solution[0]},{solution[1]}]' in {timer.Elapsed.TotalMilliseconds}ms");
+                    timer.Stop();
                 }
             }
         }
