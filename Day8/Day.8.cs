@@ -1,75 +1,13 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 
 namespace AOC22
 {
     public class Day8 : Solution
     {
         string inputFile = "Day8/Puzzle.txt";
-
-        public class Vector2
-        {
-            public int x;
-            public int y;
-
-            public Vector2(int newX=0, int newY=0)
-            {
-                x = newX;
-                y = newY;
-            }
-
-            public static Vector2 operator +(Vector2 v1, Vector2 v2)
-            {
-                return new Vector2(v1.x + v2.x, v1.y + v2.y);
-            }
-
-            public static Vector2 operator -(Vector2 v1, Vector2 v2)
-            {
-                return new Vector2(v1.x - v2.x, v1.y - v2.y);
-            }
-
-            public static Vector2 operator *(Vector2 v1, Vector2 v2)
-            {
-                return new Vector2(v1.x * v2.x, v1.y * v2.y);
-            }
-
-            public static Vector2 operator /(Vector2 v1, Vector2 v2)
-            {
-                return new Vector2(v1.x / v2.x, v1.y / v2.y);
-            }
-
-            public static bool operator ==(Vector2 v1, Vector2 v2)
-            {
-                return (v1.x == v2.x && v1.y == v2.y);
-            }
-            
-            public static bool operator !=(Vector2 v1, Vector2 v2)
-            {
-                return !(v1.x == v2.x && v1.y == v2.y);
-            }
-
-            // override object.Equals
-            public override bool Equals(object? obj)
-            {
-                if (obj == null || GetType() != obj.GetType())
-                {
-                    return false;
-                }
-                return this == (Vector2)obj;
-            }
-            
-            // override object.GetHashCode
-            public override int GetHashCode()
-            {
-                return base.GetHashCode();
-            }
-
-            public override string ToString()
-            {
-                return $"{x.ToString()},{y.ToString()}";
-            }
-        }
 
         Dictionary<string, Vector2> directions = new Dictionary<string, Vector2>()
         {
@@ -98,20 +36,20 @@ namespace AOC22
             string[] solution = new string[2];
             //Solution
             //Read map, then go through values from 1 - max-2 coords and fire VisibleFromEdge for each, count visible trees
-            maxCoords.y = fileInput.Length;
+            maxCoords.Y = fileInput.Length;
             for (int i=0; i < fileInput.Length; i++) // Y
             {
-                if (maxCoords.x == 0) maxCoords.x = fileInput[i].Length;
+                if (maxCoords.X == 0) maxCoords.X = fileInput[i].Length;
                 for (int j=0; j < fileInput[i].Length; j++) // X
                 {
                     map.Add(new Vector2(j, i).ToString(), Int32.Parse(fileInput[i][j].ToString()));
                 }
             }
 
-            int visibleTrees = (maxCoords.x*2) + (maxCoords.y*2) - 4;
-            for (int i=1; i < maxCoords.y-1; i++) // Y
+            float visibleTrees = (maxCoords.X*2) + (maxCoords.Y*2) - 4;
+            for (int i=1; i < maxCoords.Y-1; i++) // Y
             {
-                for (int j=1; j < maxCoords.x-1; j++) // X
+                for (int j=1; j < maxCoords.X-1; j++) // X
                 {
                     if (VisibleFromEdge(new Vector2(i, j))) visibleTrees++;
                 }
@@ -120,9 +58,9 @@ namespace AOC22
 
             //PT2
             int topScore = 0;
-            for (int i=0; i < maxCoords.y; i++)
+            for (int i=0; i < maxCoords.Y; i++)
             {
-                for (int j=0; j < maxCoords.x; j++)
+                for (int j=0; j < maxCoords.X; j++)
                 {
                     int currentScore = GetTreeScore(new Vector2(j, i));
                     if (currentScore > topScore) topScore = currentScore;
@@ -190,7 +128,7 @@ namespace AOC22
 
         bool IsEdge(Vector2 gridPos)
         {
-            return (gridPos.x == 0 || gridPos.x == maxCoords.x-1 || gridPos.y == 0 || gridPos.y == maxCoords.y-1);
+            return (gridPos.X == 0 || gridPos.X == maxCoords.X-1 || gridPos.Y == 0 || gridPos.Y == maxCoords.Y-1);
         }
     }
 }
